@@ -1,5 +1,9 @@
+seaborn
+statsmodels
 altair
-numpy
-pandas
-pydeck
+spicy
+helpers
 streamlit
+altair
+pandas
+matplotlib
