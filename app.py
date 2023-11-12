@@ -1,9 +1,12 @@
 import streamlit as st
-Import fourthdown
+import teamdecisions
+import bestdecisions
+import worstdecisions
+import rulingteam
 
 OPTIONS = { "Team Decisions": teamdecisions,
            "Best Decisions": bestdecisions,
-           "Worst Decisions": worsdecisions,
+           "Worst Decisions": worstdecisions,
            "4th Down Ruling Teams": rulingteam
           }
 
