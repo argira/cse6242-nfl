@@ -3,12 +3,12 @@ import numpy as py
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-import statsmodels.formula.api as sm
+#import statsmodels.formula.api as sm
 import altair as alt
 from load_data import data_prep
 from load_data import team_colors
 from scipy import stats
-from helpers import pearsonr_ci
+#from helpers import pearsonr_ci
 
 
 def app():
