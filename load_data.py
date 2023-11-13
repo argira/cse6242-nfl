@@ -59,4 +59,4 @@ def team_colors():
     team_colors = pd.read_csv(DATA/"teamcolors.csv")
   
     return team_colors
-@st.cache
+
