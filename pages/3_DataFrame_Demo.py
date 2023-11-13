@@ -24,26 +24,31 @@ from streamlit.hello.utils import show_code
 def data_frame_demo():
     @st.cache_data
     def get_UN_data():
-        AWS_BUCKET_URL = "https://streamlit-demo-data.s3-us-west-2.amazonaws.com"
-        df = pd.read_csv(AWS_BUCKET_URL + "/agri.csv.gz")
-        return df.set_index("Region")
+        CLEANED = Path("../cleaned")
+        pbp_all = pd.read_pickle(CLEANED/"pbp_all.xz")
+        fd_df = pbp_all[pbp_all["down"]== 4]
+        
+
+        return fd_df
 
     try:
         df = get_UN_data()
-        countries = st.multiselect(
-            "Choose countries", list(df.index), ["China", "United States of America"]
+        teams = list(df["home_team"].unique())
+        teams.sort()
+        team = st.multiselect(
+            "choose teams", list(df.index), teams
         )
-        if not countries:
-            st.error("Please select at least one country.")
+        if not team:
+            st.error("Please select at least one team.")
         else:
-            data = df.loc[countries]
-            data /= 1000000.0
-            st.write("### Gross Agricultural Production ($B)", data.sort_index())
+            #data = df.loc[countries]
+            #data /= 1000000.0
+            #st.write("### Gross Agricultural Production ($B)", data.sort_index())
 
-            data = data.T.reset_index()
-            data = pd.melt(data, id_vars=["index"]).rename(
-                columns={"index": "year", "value": "Gross Agricultural Product ($B)"}
-            )
+            #data = data.T.reset_index()
+            #data = pd.melt(data, id_vars=["index"]).rename(
+             #   columns={"index": "year", "value": "Gross Agricultural Product ($B)"}
+            #)
             chart = (
                 alt.Chart(data)
                 .mark_area(opacity=0.3)
