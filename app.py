@@ -1,13 +1,11 @@
 import streamlit as st
 import teamdecisions
-import bestdecisions
-import worstdecisions
-import rulingteam
+
 
 OPTIONS = { "Team Decisions": teamdecisions,
-           "Best Decisions": bestdecisions,
-           "Worst Decisions": worstdecisions,
-           "4th Down Ruling Teams": rulingteam
+           #"Best Decisions": bestdecisions,
+           #"Worst Decisions": worstdecisions,
+           #"4th Down Ruling Teams": rulingteam
           }
 
 st.sidebar.title('Navigation')
